@@ -1,10 +1,13 @@
+body{
+    background-color: turquoise;
+}
 
 .Container{
     margin: 0 auto;
     width: 500px;
 }
 
-table{
+#myTable{
     border: 1px solid #000;
     border-collapse: collapse;
     width: 500px;
@@ -15,7 +18,15 @@ th{
 }
 button{
     border: none;
-    background: white;
+    background: turquoise;
     color: black;
 
+}
+
+.table-row {
+    border: 1px solid #000;
+}
+.table-cell {
+    border: 1px solid #000;
+    text-align: center;
 }
