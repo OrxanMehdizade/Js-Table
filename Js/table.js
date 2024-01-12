@@ -1,6 +1,8 @@
 let dataCollection=[
     ["Elon", "Musk", 52, "Tesla"],
-    ["Mark", "Zuckerberg", 36, "Facebook"],];
+    ["Mark", "Zuckerberg", 36, "Facebook"],
+    ["Aark", "Zuckerberg", 36, "Facebook"],
+    ["Mark", "Auckerberg", 36, "Facebook"],];
 
 let table=document.getElementById('myTable')
 let tbody=table.getElementsByTagName('tbody')[0];
@@ -18,26 +20,44 @@ function adCollection(){
     }
 }
 
-function ageSort(){
 
-    let tableRows=Array.from(tbody.rows);
-    tableRows.sort(function (param1,param2){
-        let ageParam1=parseInt(param1.cells[2].textContent,10);
-        let ageParam2=parseInt(param2.cells[2].textContent,10);
-        return compare(ageParam1,ageParam2);
-    });
+
+
+
+
+function sortTable(index){
+    let tableRows = Array.from(tbody.rows);
+    tableRows.sort(function (row1,row2){
+        let rowvalue1=row1.cells[index].textContent.trim();
+        let rowvalue2=row2.cells[index].textContent.trim();
+        if(!isNaN(rowvalue1) && !isNaN(rowvalue2)){
+            return compare(parseInt(rowvalue1,10),parseInt(rowvalue2,10))
+        }
+        else{
+            return compare(rowvalue1,rowvalue2);
+        }
+    })
     while (tbody.firstChild){
-        tbody.removeChild(tbody.firstChild);
+        tbody.removeChild(tbody.firstChild)
     }
-    for (let i=0;i<tableRows.length;i++){
+
+
+    for (let i = 0; i < tableRows.length; i++) {
         tbody.appendChild(tableRows[i]);
     }
 }
 
-function compare(num1, num2) {
-    if (num1 > num2) return 1;
-    else if (num2 > num1) return -1;
-    else return 0;
+function compare(a, b) {
+    if (a < b) {
+        return -1;
+    }
+    if (a > b) {
+        return 1;
+    }
+    return 0;
 }
+
+
+
 
 adCollection();
